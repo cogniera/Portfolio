@@ -45,7 +45,8 @@ const WORK: WorkItem[] = [
     description:[
       "- Built and shipped scalable web applications.",
       "- Led frontend architecture decisions and collaborated cross-functionally with design and backend teams",
-      "- Built and maintained selenium(regression testing) and Jmeter scripts for load testing, improving test coverage by 70%",]
+      "- Built and maintained selenium(regression testing) and Jmeter scripts for load testing, improving test coverage by 70%"
+    ],
   },
   {
     role: "ML Research Fellow",
@@ -55,7 +56,7 @@ const WORK: WorkItem[] = [
       "- Designed and implemented a 4-stage multi-step LLM prompt pipeline (transcript structuring → clinical extraction → note generation → claim validation) to improve clinical note accuracy, achieving a 21.6% overall quality improvement over the single-step baseline",
       "- Built a 9-agent error mitigation framework targeting hallucination, negation consistency, clinical attribution, medication accuracy, and omission detection, reducing hallucination rate by 69.6%",
       "- Evaluated the pipeline across SOAP and H&P note formats, measuring citation accuracy, omission-free rate, and hallucination-free rate, with TurnID-based source linking achieving an average validity score of 0.817"
-    ]
+    ],
     },
   {
     role: "Ground Station Developer",
@@ -65,7 +66,7 @@ const WORK: WorkItem[] = [
       "- Built a RESTful API backend using Python and FastAPI, implementing endpoints for satellite command management including POST to create commands, GET to retrieve all commands, and DELETE to remove commands by ID with 404 error handling",
       "- Designed and modeled the database layer using SQLModel and SQLite, defining relational data models for satellite commands with foreign key relationships, enum-based status tracking (PENDING, SCHEDULED, ONGOING, CANCELLED, FAILED, COMPLETED), and automated database seeding with mock satellite command data on startup",
       "- Integrated CORS middleware and a custom request logger middleware into the FastAPI application",
-    ]
+    ],
   }
 ];
 
@@ -76,7 +77,7 @@ const EDUCATION: EducationItem[] = [
     period: "2025 — 2030",
     description: [
       "- Relevant coursework: Data Structures and Algorithms "
-    ]
+    ],
   },
 ];
 
