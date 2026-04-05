@@ -40,17 +40,16 @@ const WORK: WorkItem[] = [
     description:[
       "- Built and shipped scalable web applications.",
       "- Led frontend architecture decisions and collaborated cross-functionally with design and backend teams",
-      "- Built and maintained selenium(regression testing) and Jmeter scripts for load testing, improving test coverage by 70%",],
+      "- Built and maintained selenium(regression testing) and Jmeter scripts for load testing, improving test coverage by 70%"
+    ],
   },
   {
     role: "ML Research Fellow",
     company: "Hostalky (connected through Practera) ",
     period: "Jan 2026 — April 2026",
     description:[
-      "- Designed and implemented a 4-stage multi-step LLM prompt pipeline (transcript structuring → clinical extraction → note generation → claim validation) to improve clinical note accuracy, achieving a 21.6% overall quality improvement over the single-step baseline",
-      , 
-      "- Built a 9-agent error mitigation framework targeting hallucination, negation consistency, clinical attribution, medication accuracy, and omission detection, reducing hallucination rate by 69.6%"
-      ,
+      "- Designed and implemented a 4-stage multi-step LLM prompt pipeline (transcript structuring → clinical extraction → note generation → claim validation) to improve clinical note accuracy, achieving a 21.6% overall quality improvement over the single-step baseline", 
+      "- Built a 9-agent error mitigation framework targeting hallucination, negation consistency, clinical attribution, medication accuracy, and omission detection, reducing hallucination rate by 69.6%",
       "- Evaluated the pipeline across SOAP and H&P note formats, measuring citation accuracy, omission-free rate, and hallucination-free rate, with TurnID-based source linking achieving an average validity score of 0.817"
     ],
     },
