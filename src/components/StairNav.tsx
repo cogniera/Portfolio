@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "About",      href: "#about" },
-  { label: "Blogs",      href: "#blogs" },
+  { label: "Blogs",      href: "https://justthoughts.hashnode.dev/" },
   { label: "Contact me", href: "#contact" },
 ];
 
