@@ -23,6 +23,11 @@ interface ProjectItem {
   name: string;
   stack: string[];
   description: Desc;
+  github?: string;
+  linkedin?: string;
+  devpost?: string;
+  deployed?: string;
+  demo?: string;
 }
 interface CertItem {
   name: string;
@@ -48,9 +53,7 @@ const WORK: WorkItem[] = [
     period: "Jan 2026 — April 2026",
     description:[
       "- Designed and implemented a 4-stage multi-step LLM prompt pipeline (transcript structuring → clinical extraction → note generation → claim validation) to improve clinical note accuracy, achieving a 21.6% overall quality improvement over the single-step baseline",
-      , 
-      "- Built a 9-agent error mitigation framework targeting hallucination, negation consistency, clinical attribution, medication accuracy, and omission detection, reducing hallucination rate by 69.6%"
-      ,
+      "- Built a 9-agent error mitigation framework targeting hallucination, negation consistency, clinical attribution, medication accuracy, and omission detection, reducing hallucination rate by 69.6%",
       "- Evaluated the pipeline across SOAP and H&P note formats, measuring citation accuracy, omission-free rate, and hallucination-free rate, with TurnID-based source linking achieving an average validity score of 0.817"
     ]
     },
@@ -104,24 +107,48 @@ const CERTIFICATIONS: CertItem[] = [
   },
 ];
 
+const CONTACT = [
+  { label: "Email", href: "mailto:paarths376@gmail.com", icon: "✉" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/paarth-sharma-engineering/", icon: "in" },
+  { label: " ", href: "https://x.com/paarths_", icon: "𝕏" },
+  { label: "GitHub", href: "https://github.com/cogniera", icon: "⚙" },
+];
+
 const PROJECTS: ProjectItem[] = [
   {
-    name: "MiniGPT",
-    stack: ["Next.js", "TypeScript", "PostgreSQL"],
-    description:
-      "A full-stack web platform with real-time collaboration features, built with Next.js and WebSockets.",
+    name: "TinyGPT",
+    stack: ["JAX", "Keras", "Grain", "Orbax", "Optax"],
+    description: [
+      "- Built a 30M parameter GPT-style language model from scratch using JAX and Keras, implementing multi-head self-attention, feedforward layers, and positional encoding",
+      "- Trained on the tinyStories model at https://huggingface.co/datasets/roneneldan/TinyStories",
+      "- Trained for 3 Epochs on Nvidia T4 GPU",
+    ],
+    github: "https://github.com/cogniera/TinyGPT",
+    deployed: "https://huggingface.co/spaces/paarths376/tinyGPT",
   },
   {
-    name: "Project Beta",
-    stack: ["Python", "PyTorch", "FastAPI"],
-    description:
-      "An image classification pipeline using a custom CNN architecture, served via a REST API.",
+    name: "InferOpt",
+    stack: ["React", "FastAPI", "OpenAI Agents SDK", "RAG", "Three.js", "Redis"],
+    description: [
+      "- Won Canada's biggest AI hackathon in a category out of 100+ teams",
+      "- Built InferOpt, an LLM inference optimization engine that reduces token costs by up to 90% through intelligent template caching and slot filling",
+      "- Designed a full-stack architecture spanning a FastAPI inference layer, Redis template store, and React dashboard — deployed via Docker with an Nginx reverse proxy",
+    ],
+    github: "https://github.com/cogniera/InferOpt",
+    demo: "https://youtu.be/g7SD_MkhJGA?si=YYEv83hL969ncbPI",
+    devpost: "https://devpost.com/software/inferopt",
   },
   {
-    name: "Project Gamma",
-    stack: ["React", "Three.js", "Node.js"],
-    description:
-      "An interactive 3D data visualisation tool for exploring high-dimensional datasets in the browser.",
+    name: "ScholarMatch",
+    stack: ["React", "Three.js", "Node.js", "Superbase", "PostgreSQL"],
+    description: [
+      "- Built ScholarMatch, an AI-powered scholarship discovery platform that parses student resumes and scores opportunities using Gemini AI to surface the ones students are most likely to win",
+      "- Engineered a full-stack system with a FastAPI backend, Supabase PostgreSQL database, Auth0 authentication, and a custom web scraper deployed on Vultr via Docker",
+      "- Designed a matching engine that scores scholarships across 6+ student attributes (GPA, program, location, academic level, financial need, extracurriculars) to maximize award probability",
+    ],
+    github: "https://github.com/cogniera/scholarmatch",
+    devpost: "https://devpost.com/software/scholarmatch-wov9gc",
+    demo: "https://www.linkedin.com/posts/paarth-sharma-engineering_just-finished-building-at-hack-canada-this-ugcPost-7436822579409207296-3Wra?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFkm7xEBmaDcShGMzcmjourxYUrAoaEfY7Y",
   },
 ];
 
@@ -386,6 +413,137 @@ function ProjectRow({
         </div>
 
         <DescBlock value={item.description} />
+
+        {/* Project links */}
+        {(item.github || item.linkedin || item.devpost || item.deployed || item.demo) && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+            {item.github && (
+              <a
+                href={item.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#AFA9EC",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 10px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                GitHub ↗
+              </a>
+            )}
+            {item.linkedin && (
+              <a
+                href={item.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#AFA9EC",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 10px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                LinkedIn ↗
+              </a>
+            )}
+            {item.devpost && (
+              <a
+                href={item.devpost}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#AFA9EC",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 10px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                Devpost ↗
+              </a>
+            )}
+            {item.deployed && (
+              <a
+                href={item.deployed}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#AFA9EC",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 10px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                Deploy ↗
+              </a>
+            )}
+            {item.demo && (
+              <a
+                href={item.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#AFA9EC",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 10px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                Demo ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </Reveal>
   );
@@ -546,6 +704,42 @@ export default function Sections() {
             delay={i * 0.07}
           />
         ))}
+      </DarkPanel>
+
+      {/* Contact */}
+      <DarkPanel id="contact" label="Connect" title="Get in Touch">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+          {CONTACT.map((item, i) => (
+            <Reveal key={item.label} delay={i * 0.07}>
+              <a
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#FFFFFF",
+                  backgroundColor: "rgba(127,119,221,0.18)",
+                  border: "0.5px solid rgba(175,169,236,0.35)",
+                  borderRadius: 8,
+                  padding: "10px 16px",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.32)")}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(127,119,221,0.18)")}
+              >
+                <span>{item.icon}</span>
+                {item.label}
+              </a>
+            </Reveal>
+          ))}
+        </div>
       </DarkPanel>
     </div>
   );
